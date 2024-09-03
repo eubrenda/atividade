@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+    <title>Books List</title>
+</head>
+<body>
+    <h1>Books</h1>
+    <a href="{{ url_for('new_book') }}">Add New Book</a>
+    <ul>
+        {% for book in books %}
+            <li>
+                {{ book.title }} 
+                <a href="{{ url_for('edit_book', book_id=book.id) }}">Edit</a>
+                <form action="{{ url_for('delete_book', book_id=book.id) }}" method="post" style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
